@@ -10,11 +10,11 @@ import vn.jobhunter.jobhunter.repository.UserRepository;
 import vn.jobhunter.jobhunter.service.UserService;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-    public UserServiceImpl(UserRepository userRepository){
+    public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
@@ -24,14 +24,14 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void handleDeleteUser(long id){
+    public void handleDeleteUser(long id) {
         this.userRepository.deleteById(id);
     }
 
     @Override
     public User fetchUserById(long id) {
         Optional<User> userOptional = this.userRepository.findById(id);
-        if(userOptional.isPresent()){
+        if (userOptional.isPresent()) {
             return userOptional.get();
         }
         return null;
@@ -39,19 +39,24 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public List<User> fetchUser() {
-        List<User> users= this.userRepository.findAll();
+        List<User> users = this.userRepository.findAll();
         return users;
     }
 
     @Override
     public User updateUser(User reqUser) {
         User userUpdate = this.fetchUserById(reqUser.getId());
-        if(userUpdate != null){
+        if (userUpdate != null) {
             userUpdate.setEmail(reqUser.getEmail());
             userUpdate.setName(reqUser.getName());
             userUpdate.setPassword(reqUser.getPassword());
             this.userRepository.save(userUpdate);
         }
         return userUpdate;
+    }
+
+    @Override
+    public User handleGetUserByUserName(String username) {
+        return this.userRepository.findByEmail(username);
     }
 }

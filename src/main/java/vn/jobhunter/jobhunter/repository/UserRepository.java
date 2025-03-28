@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import vn.jobhunter.jobhunter.domain.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends JpaRepository<User, Long> {
 
+    User findByEmail(String email);
 }
