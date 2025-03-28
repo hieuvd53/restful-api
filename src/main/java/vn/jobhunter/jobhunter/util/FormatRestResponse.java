@@ -38,7 +38,7 @@ public class FormatRestResponse implements ResponseBodyAdvice<Object> {
         if (status >= 400) {
             return body;
         } else {
-            // case sucess
+            // case success
             res.setData(body);
             res.setMessage("call api success");
         }
