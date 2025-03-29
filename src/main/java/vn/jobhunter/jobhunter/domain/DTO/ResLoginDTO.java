@@ -1,4 +1,4 @@
-package vn.jobhunter.jobhunter.domain.DTO;
+package vn.jobhunter.jobhunter.domain.dto;
 
 public class ResLoginDTO {
 

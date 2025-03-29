@@ -8,8 +8,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
-import vn.jobhunter.jobhunter.domain.DTO.LoginDTO;
-import vn.jobhunter.jobhunter.domain.DTO.ResLoginDTO;
+import vn.jobhunter.jobhunter.domain.dto.LoginDTO;
+import vn.jobhunter.jobhunter.domain.dto.ResLoginDTO;
 import vn.jobhunter.jobhunter.util.SecurityUtil;
 
 import org.springframework.web.bind.annotation.PostMapping;
