@@ -1,6 +1,5 @@
 package vn.jobhunter.jobhunter.service.impl;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -8,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import vn.jobhunter.jobhunter.domain.Company;
+import vn.jobhunter.jobhunter.domain.dto.Meta;
+import vn.jobhunter.jobhunter.domain.dto.ResultPaginationDTO;
 import vn.jobhunter.jobhunter.repository.CompanyRepository;
 import vn.jobhunter.jobhunter.service.CompanyService;
 
@@ -30,9 +31,20 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public List<Company> getAllCompanies(Pageable pageable) {
+    public ResultPaginationDTO getAllCompanies(Pageable pageable) {
         Page<Company> pageCompany = this.companyRepository.findAll(pageable);
-        return pageCompany.getContent();
+
+        ResultPaginationDTO rs = new ResultPaginationDTO();
+
+        Meta meta = new Meta();
+        meta.setPage(pageCompany.getNumber() + 1);
+        meta.setPageSize(pageCompany.getSize());
+        meta.setPages(pageCompany.getTotalPages());
+        meta.setTotal(pageCompany.getNumberOfElements());
+
+        rs.setMeta(meta);
+        rs.setResult(pageCompany.getContent());
+        return rs;
 
     }
 

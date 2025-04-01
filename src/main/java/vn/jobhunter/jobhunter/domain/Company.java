@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.time.Instant;
 
 import jakarta.persistence.Basic;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -41,18 +40,14 @@ public class Company extends AbstractAuditingEntity<Long> implements Serializabl
 
     @PrePersist
     public void handleBeforeCreate() {
-        String currentUser = SecurityUtil.getCurrentUserLogin().isPresent() == true
-                ? SecurityUtil.getCurrentUserLogin().get()
-                : "";
+        String currentUser = SecurityUtil.getCurrentUserLogin().orElse("");
         this.setCreatedBy(currentUser);
         this.setCreatedDate(Instant.now());
     }
 
     @PreUpdate
     public void handleBeforeUpdate() {
-        String currentUser = SecurityUtil.getCurrentUserLogin().isPresent() == true
-                ? SecurityUtil.getCurrentUserLogin().get()
-                : "";
+        String currentUser = SecurityUtil.getCurrentUserLogin().orElse("");
         this.setLastModifiedBy(currentUser);
         this.setLastModifiedDate(Instant.now());
     }

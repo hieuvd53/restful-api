@@ -1,10 +1,9 @@
 package vn.jobhunter.jobhunter.service;
 
-import java.util.List;
-
 import org.springframework.data.domain.Pageable;
 
 import vn.jobhunter.jobhunter.domain.Company;
+import vn.jobhunter.jobhunter.domain.dto.ResultPaginationDTO;
 
 public interface CompanyService {
 
@@ -12,7 +11,7 @@ public interface CompanyService {
 
     void handleDelete(long id);
 
-    List<Company> getAllCompanies(Pageable pageable);
+    ResultPaginationDTO getAllCompanies(Pageable pageable);
 
     Company handleUpdate(Company updateCompany);
 }
