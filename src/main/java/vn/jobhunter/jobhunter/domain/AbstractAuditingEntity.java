@@ -35,7 +35,7 @@ public abstract class AbstractAuditingEntity<T> implements Serializable {
 
     @CreatedDate
     @Column(name = "created_date", updatable = false)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss a", timezone = "GMT+7")
+    // @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss a", timezone = "GMT+7")
     private Instant createdDate = Instant.now();
 
     @LastModifiedBy

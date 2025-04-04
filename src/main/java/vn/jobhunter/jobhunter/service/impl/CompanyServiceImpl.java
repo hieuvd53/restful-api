@@ -7,8 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import vn.jobhunter.jobhunter.domain.Company;
-import vn.jobhunter.jobhunter.domain.dto.Meta;
-import vn.jobhunter.jobhunter.domain.dto.ResultPaginationDTO;
+import vn.jobhunter.jobhunter.domain.response.Meta;
+import vn.jobhunter.jobhunter.domain.response.ResultPaginationDTO;
 import vn.jobhunter.jobhunter.repository.CompanyRepository;
 import vn.jobhunter.jobhunter.service.CompanyService;
 

@@ -3,7 +3,7 @@ package vn.jobhunter.jobhunter.service;
 import org.springframework.data.domain.Pageable;
 
 import vn.jobhunter.jobhunter.domain.Company;
-import vn.jobhunter.jobhunter.domain.dto.ResultPaginationDTO;
+import vn.jobhunter.jobhunter.domain.response.ResultPaginationDTO;
 
 public interface CompanyService {
 

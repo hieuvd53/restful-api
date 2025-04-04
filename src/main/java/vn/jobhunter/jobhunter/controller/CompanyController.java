@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import vn.jobhunter.jobhunter.domain.Company;
-import vn.jobhunter.jobhunter.domain.dto.ResultPaginationDTO;
+import vn.jobhunter.jobhunter.domain.response.ResultPaginationDTO;
 import vn.jobhunter.jobhunter.service.CompanyService;
 import java.util.Optional;
 import org.springframework.data.domain.PageRequest;

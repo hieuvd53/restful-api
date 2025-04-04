@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import vn.jobhunter.jobhunter.domain.User;
-import vn.jobhunter.jobhunter.domain.dto.ResultPaginationDTO;
-import vn.jobhunter.jobhunter.domain.dto.ResCreateUserDTO;
-import vn.jobhunter.jobhunter.domain.dto.ResUpdateUserDTO;
-import vn.jobhunter.jobhunter.domain.dto.ResUserDTO;
+import vn.jobhunter.jobhunter.domain.response.ResCreateUserDTO;
+import vn.jobhunter.jobhunter.domain.response.ResUpdateUserDTO;
+import vn.jobhunter.jobhunter.domain.response.ResUserDTO;
+import vn.jobhunter.jobhunter.domain.response.ResultPaginationDTO;
 import vn.jobhunter.jobhunter.service.UserService;
 import vn.jobhunter.jobhunter.util.annotation.ApiMessage;
 import vn.jobhunter.jobhunter.util.error.IdInvalidException;

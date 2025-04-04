@@ -8,11 +8,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import vn.jobhunter.jobhunter.domain.User;
-import vn.jobhunter.jobhunter.domain.dto.Meta;
-import vn.jobhunter.jobhunter.domain.dto.ResultPaginationDTO;
-import vn.jobhunter.jobhunter.domain.dto.ResCreateUserDTO;
-import vn.jobhunter.jobhunter.domain.dto.ResUpdateUserDTO;
-import vn.jobhunter.jobhunter.domain.dto.ResUserDTO;
+import vn.jobhunter.jobhunter.domain.response.Meta;
+import vn.jobhunter.jobhunter.domain.response.ResCreateUserDTO;
+import vn.jobhunter.jobhunter.domain.response.ResUpdateUserDTO;
+import vn.jobhunter.jobhunter.domain.response.ResUserDTO;
+import vn.jobhunter.jobhunter.domain.response.ResultPaginationDTO;
 import vn.jobhunter.jobhunter.repository.UserRepository;
 import vn.jobhunter.jobhunter.service.UserService;
 

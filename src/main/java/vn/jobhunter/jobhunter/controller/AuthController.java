@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import vn.jobhunter.jobhunter.domain.User;
-import vn.jobhunter.jobhunter.domain.dto.LoginDTO;
-import vn.jobhunter.jobhunter.domain.dto.ResLoginDTO;
+import vn.jobhunter.jobhunter.domain.request.ReqLoginDTO;
+import vn.jobhunter.jobhunter.domain.response.ResLoginDTO;
 import vn.jobhunter.jobhunter.service.UserService;
 import vn.jobhunter.jobhunter.util.SecurityUtil;
 import vn.jobhunter.jobhunter.util.annotation.ApiMessage;
@@ -47,7 +47,7 @@ public class AuthController {
         }
 
         @PostMapping("/auth/login")
-        public ResponseEntity<ResLoginDTO> login(@Valid @RequestBody LoginDTO loginDTO) {
+        public ResponseEntity<ResLoginDTO> login(@Valid @RequestBody ReqLoginDTO loginDTO) {
                 UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                                 loginDTO.getUserName(), loginDTO.getPassword());
 
@@ -63,10 +63,10 @@ public class AuthController {
                                 userLoginInfo.getId(),
                                 userLoginInfo.getName(),
                                 userLoginInfo.getEmail());
-                res.setUserLogin(userLogin);
+                res.setUser(userLogin);
 
                 // Create access Token
-                String access_token = this.securityUtil.createAccessToken(authentication.getName(), res.getUserLogin());
+                String access_token = this.securityUtil.createAccessToken(authentication.getName(), res.getUser());
                 res.setAccess_token(access_token);
 
                 // create refresh token
@@ -91,18 +91,20 @@ public class AuthController {
 
         @GetMapping("/auth/account")
         @ApiMessage("fetch account login")
-        public ResponseEntity<ResLoginDTO.UserLogin> getAccount() {
+        public ResponseEntity<ResLoginDTO.UserGetAccount> getAccount() {
                 String email = SecurityUtil.getCurrentUserLogin().orElse("");
 
                 User userLoginInfo = this.userService.handleGetUserByUserName(email);
                 ResLoginDTO.UserLogin userLogin = new ResLoginDTO.UserLogin();
+                ResLoginDTO.UserGetAccount userGetAccount = new ResLoginDTO.UserGetAccount();
                 if (userLoginInfo != null) {
                         userLogin.setId(userLoginInfo.getId());
                         userLogin.setEmail(userLoginInfo.getEmail());
                         userLogin.setName(userLoginInfo.getName());
+                        userGetAccount.setUser(userLogin);
                 }
 
-                return ResponseEntity.ok(userLogin);
+                return ResponseEntity.ok(userGetAccount);
         }
 
         @GetMapping("/auth/refresh")
@@ -133,10 +135,10 @@ public class AuthController {
                                 userLoginInfo.getId(),
                                 userLoginInfo.getName(),
                                 userLoginInfo.getEmail());
-                res.setUserLogin(userLogin);
+                res.setUser(userLogin);
 
                 // Create access Token
-                String access_token = this.securityUtil.createAccessToken(email, res.getUserLogin());
+                String access_token = this.securityUtil.createAccessToken(email, res.getUser());
                 res.setAccess_token(access_token);
 
                 // create refresh token

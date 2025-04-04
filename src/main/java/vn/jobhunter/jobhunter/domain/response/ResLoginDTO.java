@@ -1,4 +1,6 @@
-package vn.jobhunter.jobhunter.domain.dto;
+package vn.jobhunter.jobhunter.domain.response;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +11,9 @@ import lombok.Setter;
 @Setter
 public class ResLoginDTO {
 
+    @JsonProperty("access_token")
     private String access_token;
-    private UserLogin userLogin;
+    private UserLogin user;
 
     @Getter
     @Setter
@@ -20,5 +23,13 @@ public class ResLoginDTO {
         private long id;
         private String name;
         private String email;
+    }
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class UserGetAccount {
+        private UserLogin user;
     }
 }

@@ -28,7 +28,7 @@ import org.springframework.stereotype.Service;
 
 import com.nimbusds.jose.util.Base64;
 
-import vn.jobhunter.jobhunter.domain.dto.ResLoginDTO;
+import vn.jobhunter.jobhunter.domain.response.ResLoginDTO;
 
 @Service
 public class SecurityUtil {
@@ -81,7 +81,7 @@ public class SecurityUtil {
             .issuedAt(now)
             .expiresAt(validity)
             .subject(email)
-            .claim("user", loginDTO.getUserLogin())
+            .claim("user", loginDTO.getUser())
             .build();
 
         JwsHeader jwsHeader = JwsHeader.with(JWT_ALGORITHM).build();
